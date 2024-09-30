@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import fs from 'fs';
 import styles from './Page.module.css'
 import {
   Table,
@@ -11,13 +12,26 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import path from "path";
 interface User {
 	id: number;
-	name: string;
+	task: string;
 }
 export default async function Home() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const users: User[] = await res.json();
+  // const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  // const users: User[] = await res.json();
+
+  // Определяем путь к файлу
+  const filePath = await path.join(process.cwd(), 'temp-data/data', 'data.json');
+  
+  // Читаем файл
+  const jsonData = await fs.readFileSync(filePath, 'utf-8');
+
+  // Преобразуем JSON в объект
+  const users: User[] = await JSON.parse(jsonData);
+  // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  // const res = await fetch(`${baseUrl}/data/data.json`);
+  // const users: User[] = await res.json();
   return (
 
     <main>
@@ -26,7 +40,7 @@ export default async function Home() {
       
       <div className={styles.block}>
         <ul >
-        <li><button className={styles.Button} ><Link href="/createTask">Создать задачу</Link></button></li>
+        <li><button className={styles.Button} ><Link href="/CreateTask">Создать задачу</Link></button></li>
         <li><button className={styles.Button} ><Link href="/login">Войти</Link></button></li>
         <li><button className={styles.Button} ><Link href="/avatar">Аватар</Link></button></li>
         <li><button className={styles.Button} ><Link href="/exit">Выйти</Link></button></li>
@@ -47,7 +61,7 @@ export default async function Home() {
   <TableBody>
     {users.map(user => (
       <TableRow key={user.id}>
-        <TableCell>{user.name}</TableCell>
+        <TableCell>{user.task}</TableCell>
         <TableCell>
           <button>Редактировать</button>
         </TableCell>
@@ -56,25 +70,6 @@ export default async function Home() {
   </TableBody>
 </Table>
 
-    {/* <Table>
-  <TableCaption>A list of your recent invoices.</TableCaption>
-  <TableHeader>
-    <TableRow>
-      <TableHead className="w-[100px]">Invoice</TableHead>
-      <TableHead>Status</TableHead>
-      <TableHead>Method</TableHead>
-      <TableHead className="text-right">Amount</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell className="font-medium">INV001</TableCell>
-      <TableCell>Paid</TableCell>
-      <TableCell>Credit Card</TableCell>
-      <TableCell className="text-right">$250.00</TableCell>
-    </TableRow>
-  </TableBody>
-</Table> */}
     </main>
   );
   
