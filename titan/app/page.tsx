@@ -4,12 +4,16 @@ import styles from './Page.module.css'
 export default function Home() {
   return (
     <main>
-      <h1 >Добро пожаловать на сайт!</h1>
-      <div>
-        <button className={styles.Button} > <Link href="/users/new">Создать задачу</Link></button> 
-        <button className={styles.Button} >Войти</button>
-        <button className={styles.Button} >Аватар</button>
-        <button className={styles.Button} >Выйти</button>
+        <h1 className={styles.Title}>Добро пожаловать на сайт!</h1>
+      
+      <div className={styles.block}>
+        <ul >
+        <li><Link href="/createTask">Создать задачу</Link></li> 
+        <li><button className={styles.Button} ><Link href="/login">Войти</Link></button></li>
+        <li><button className={styles.Button} ><Link href="/avatar">Аватар</Link></button></li>
+        <li><button className={styles.Button} ><Link href="/exit">Выйти</Link></button></li>
+
+        </ul>
       </div>
       <Link href="/users">Users</Link>
 

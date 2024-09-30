@@ -1,6 +1,20 @@
 .Button{
     display: inline-block;
-    margin: 40px;
+    margin: 20px;
+    border: 2px solid rgb(66, 116, 63);
+    border-radius: 60px;
+    padding: 1%;
+}
+.block{
+    margin: 5%;
+    width: 50%;
+}
+
+.block_list{
+    justify-content: center;
+}
+.Title{
+    justify-content: center;
 }
 /* div button{
     display: inline-block;
