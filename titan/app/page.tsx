@@ -18,20 +18,12 @@ interface User {
 	task: string;
 }
 export default async function Home() {
-  // const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  // const users: User[] = await res.json();
 
-  // Определяем путь к файлу
+
   const filePath = await path.join(process.cwd(), 'temp-data/data', 'data.json');
-  
-  // Читаем файл
   const jsonData = await fs.readFileSync(filePath, 'utf-8');
-
-  // Преобразуем JSON в объект
   const users: User[] = await JSON.parse(jsonData);
-  // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  // const res = await fetch(`${baseUrl}/data/data.json`);
-  // const users: User[] = await res.json();
+
   return (
 
     <main>
@@ -41,8 +33,8 @@ export default async function Home() {
       <div className={styles.block}>
         <ul >
         <li><button className={styles.Button} ><Link href="/CreateTask">Создать задачу</Link></button></li>
+        <li><button className={styles.Button_img} ><img className={styles.img} src="https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-icon-download-in-svg-png-gif-file-formats--workplace-office-employee-businessman-flat-business-icons-1-pack-1179329.png"></img></button></li>
         <li><button className={styles.Button} ><Link href="/login">Войти</Link></button></li>
-        <li><button className={styles.Button} ><Link href="/avatar">Аватар</Link></button></li>
         <li><button className={styles.Button} ><Link href="/exit">Выйти</Link></button></li>
 
         </ul>

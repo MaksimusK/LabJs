@@ -5,8 +5,19 @@
     border-radius: 60px;
     padding: 1%;
 }
+.Button_img{
+    display: inline-block;
+    margin: 20px;
+    /* background-image: url('/image/brr.jpg'); */
+    padding: 1%;
+
+}
+.img{
+    height: 100px;
+    width: 100px;
+}
 .block{
-    margin: 5%;
+    margin: 2%;
     width: 50%;
 }
 
