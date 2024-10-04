@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import fs from 'fs';
 import styles from './Page.module.css'
+import { Button } from "./components/ui/button"
 import {
   Table,
   TableBody,
@@ -12,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/app/components/ui/table"
+import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar"
 import path from "path";
 interface User {
 	id: number;
@@ -32,10 +34,19 @@ export default async function Home() {
       
       <div className={styles.block}>
         <ul >
-        <li><button className={styles.Button_img} ><img className={styles.img} src="https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-icon-download-in-svg-png-gif-file-formats--workplace-office-employee-businessman-flat-business-icons-1-pack-1179329.png"></img></button></li>
-        <li><button className={styles.Button} ><Link href="/login">Войти</Link></button></li>
-        <li><button className={styles.Button} ><Link href="/CreateTask">Создать задачу</Link></button></li>
-        <li><button className={styles.Button} ><Link href="/exit">Выйти</Link></button></li>
+        <li><Avatar>
+        <AvatarImage src="https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-icon-download-in-svg-png-gif-file-formats--workplace-office-employee-businessman-flat-business-icons-1-pack-1179329.png" />
+        <AvatarFallback>CN</AvatarFallback>
+        </Avatar></li>
+        <li><Button asChild>
+            <Link href="/CreateTask">Создать задачу</Link>
+        </Button></li>
+        <li><Button asChild>
+            <Link href="/login">Войти</Link>
+        </Button></li>
+        <li><Button variant="destructive">
+          <Link href="/exit">Выйти</Link>
+          </Button></li>
 
         </ul>
       </div>
