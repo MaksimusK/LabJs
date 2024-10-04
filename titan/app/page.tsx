@@ -15,6 +15,8 @@ import {
 } from "@/app/components/ui/table"
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar"
 import path from "path";
+
+import { tasks } from "@/temp-data/data/task"
 interface User {
 	id: number;
 	task: string;
@@ -29,9 +31,9 @@ export default async function Home() {
   return (
 
     <main>
-      
+      <header>
+
         <h1 className={styles.Title}>Добро пожаловать на сайт!</h1>
-      
       <div className={styles.block}>
         <ul >
         <li><Avatar>
@@ -52,6 +54,8 @@ export default async function Home() {
       </div>
           
       <Link href="/users">Users</Link>
+      </header>
+      
       
 
       <Table>
@@ -62,9 +66,9 @@ export default async function Home() {
     </TableRow>
   </TableHeader>
   <TableBody>
-    {users.map(user => (
-      <TableRow key={user.id}>
-        <TableCell>{user.task}</TableCell>
+    {tasks.map(tasks => (
+      <TableRow key={tasks.id}>
+        <TableCell>{tasks.task}</TableCell>
         <TableCell>
           <button>Редактировать</button>
         </TableCell>
