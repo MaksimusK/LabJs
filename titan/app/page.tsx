@@ -1,4 +1,4 @@
-
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs"
 import Image from "next/image";
 import Link from "next/link";
 import fs from 'fs';
@@ -24,29 +24,25 @@ interface User {
 export default async function Home() {
 
 
-  const filePath = await path.join(process.cwd(), 'temp-data/data', 'data.json');
-  const jsonData = await fs.readFileSync(filePath, 'utf-8');
-  const users: User[] = await JSON.parse(jsonData);
-
   return (
 
     <main>
       <header>
-
+        
         <h1 className={styles.Title}>Добро пожаловать на сайт!</h1>
       <div className={styles.block}>
         <ul >
-        <li><Avatar>
+        <li><Avatar className={styles.Button_img}>
         <AvatarImage src="https://cdn.iconscout.com/icon/free/png-256/free-laptop-user-icon-download-in-svg-png-gif-file-formats--workplace-office-employee-businessman-flat-business-icons-1-pack-1179329.png" />
         <AvatarFallback>CN</AvatarFallback>
         </Avatar></li>
-        <li><Button asChild>
+        <li><Button asChild className={styles.Button}>
             <Link href="/CreateTask">Создать задачу</Link>
         </Button></li>
-        <li><Button asChild>
+        <li><Button asChild className={styles.Button}>
             <Link href="/login">Войти</Link>
         </Button></li>
-        <li><Button variant="destructive">
+        <li><Button variant="destructive" className={styles.Button}>
           <Link href="/exit">Выйти</Link>
           </Button></li>
 
